@@ -23,12 +23,15 @@
     "url": "https://github.com/sasaplus1/entry-list.js.git"
   },
   "scripts": {
+    "build": "tsc",
+    "check-types": "tsc --noEmit",
     "fix": "run-s fix:*",
     "fix:eslint": "eslint --fix --ext .js,.ts .",
     "fix:prettier": "prettier --write '**/*.+(js|ts)'",
     "fixpack": "npx fixpack",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint --cache --ext .js,.ts .",
-    "lint:prettier": "prettier --check '**/*.+(js|ts)'"
+    "lint:prettier": "prettier --check '**/*.+(js|ts)'",
+    "watch": "tsc --incremental --watch"
   }
 }
