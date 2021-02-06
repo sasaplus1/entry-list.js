@@ -39,7 +39,7 @@
     "url": "https://github.com/sasaplus1/entry-list.js.git"
   },
   "scripts": {
-    "build": "run-s build:*",
+    "build": "run-p -l build:*",
     "build:cjs": "tsc",
     "build:mjs": "rollup -c --environment build:esm",
     "build:umd": "rollup -c --environment build:umd",
