@@ -3,6 +3,7 @@
   "description": "get entry list of object",
   "version": "0.0.0",
   "author": "sasa+1 <sasaplus1@gmail.com>",
+  "browser": "./dist/umd/entry-list.js",
   "devDependencies": {
     "@types/mocha": "^8.2.0",
     "@types/node": "^14.14.25",
@@ -28,13 +29,17 @@
   },
   "license": "MIT",
   "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.mjs",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/sasaplus1/entry-list.js.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "run-s build:*",
+    "build:cjs": "tsc",
+    "build:mjs": "rollup -c --environment build:esm",
+    "build:umd": "rollup -c --environment build:umd",
     "check-types": "tsc --noEmit",
     "fix": "run-s fix:*",
     "fix:eslint": "eslint --fix --ext .js,.ts .",
