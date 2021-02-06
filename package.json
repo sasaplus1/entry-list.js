@@ -10,6 +10,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "@wessberg/rollup-plugin-ts": "^1.3.8",
+    "benchmark": "^2.1.4",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-node": "^11.1.0",
@@ -39,6 +40,7 @@
     "url": "https://github.com/sasaplus1/entry-list.js.git"
   },
   "scripts": {
+    "benchmark": "node ./benchmark/index.js",
     "build": "run-p -l build:*",
     "build:cjs": "tsc",
     "build:mjs": "rollup -c --environment build:esm",
