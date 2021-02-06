@@ -27,6 +27,9 @@
   "engines": {
     "node": ">=10.4"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "license": "MIT",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
