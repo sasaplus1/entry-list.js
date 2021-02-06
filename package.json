@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "author": "sasa+1 <sasaplus1@gmail.com>",
   "license": "MIT",
+  "main": "./index.js",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
