@@ -3,6 +3,7 @@
     "declaration": true,
     "module": "CommonJS",
     "newLine": "lf",
+    "outDir": "dist/cjs",
     "sourceMap": true,
     "strict": true,
     "target": "ESNext"
