@@ -25,21 +25,21 @@ export function entryList(
   value: unknown,
   prefix: (string | symbol)[] = [],
   result: Entry[] = [],
-  references: unknown[] = []
+  references: WeakSet<any> = new WeakSet()
 ): Entry[] {
   const keys = getKeys(value);
 
   if (keys === null) {
     result.push({ value, key: prefix });
   } else {
-    references.push(value);
+    references.add(value);
 
     for (let i = 0, len = keys.length; i < len; ++i) {
       // NOTE: https://github.com/microsoft/TypeScript/issues/1863
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const v = (value as Record<string | symbol, any>)[keys[i] as any];
 
-      if (references.includes(v)) {
+      if (references.has(v)) {
         result.push({
           value: v,
           key: [...prefix, keys[i]]
