@@ -1,6 +1,9 @@
 declare type Entry = {
-    key: (string | symbol)[];
+    key: (string | number | symbol)[];
     value: any;
 };
-export declare function entryList(value: unknown, prefix?: (string | symbol)[], result?: Entry[], references?: unknown[]): Entry[];
+declare type Options = {
+    collectSymbol: boolean;
+};
+export declare function entryList(value: unknown, options?: Options): Entry[];
 export {};

@@ -1,39 +1,47 @@
-const toString = Object.prototype.toString;
-function getKeys(value) {
-    if (Array.isArray(value)) {
-        return Object.keys(value);
-    }
-    if (toString.call(value) === '[object Object]') {
-        return [
-            ...Object.keys(value),
-            ...Object.getOwnPropertySymbols(value)
-        ];
-    }
-    return null;
-}
-function entryList(value, prefix = [], result = [], references = []) {
-    const keys = getKeys(value);
-    if (keys === null) {
-        result.push({ value, key: prefix });
-    }
-    else {
-        references.push(value);
-        for (let i = 0, len = keys.length; i < len; ++i) {
-            // NOTE: https://github.com/microsoft/TypeScript/issues/1863
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const v = value[keys[i]];
-            if (references.includes(v)) {
-                result.push({
-                    value: v,
-                    key: [...prefix, keys[i]]
-                });
+function entryList(value, options = { collectSymbol: false }) {
+    const { collectSymbol } = options;
+    const getKeys = collectSymbol
+        ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            function (value) {
+                return Array.isArray(value)
+                    ? Object.keys(value)
+                    : Reflect.ownKeys(value);
             }
-            else {
-                entryList(v, [...prefix, keys[i]], result, references);
+        : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            function (value) {
+                return Object.keys(value);
+            };
+    const result = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const references = new WeakSet();
+    const getEntries = function getEntries(value, prefix = []) {
+        if (value !== null && typeof value === 'object') {
+            references.add(value);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore 2345
+            const keys = getKeys(value);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            for (const key of keys) {
+                // NOTE: https://github.com/microsoft/TypeScript/issues/1863
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const v = value[key];
+                if (references.has(v)) {
+                    result.push({
+                        value: v,
+                        key: [...prefix, key]
+                    });
+                }
+                else {
+                    getEntries(v, [...prefix, key]);
+                }
             }
         }
-    }
-    return result;
+        else {
+            result.push({ value, key: prefix });
+        }
+        return result;
+    };
+    return getEntries(value);
 }
 
 export { entryList };
