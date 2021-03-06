@@ -149,7 +149,7 @@ describe('entry-list', function () {
         }
       };
 
-      assert.deepStrictEqual(entryList(data), [
+      assert.deepStrictEqual(entryList(data, { collectSymbol: true }), [
         { key: ['a', 'b', 'c'], value: 1 },
         { key: ['a', 'b', 'd'], value: 2 },
         { key: ['a', 'e', '0'], value: 3 },
