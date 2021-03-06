@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1615016572242,
+  "lastUpdate": 1615017277863,
   "repoUrl": "https://github.com/sasaplus1/entry-list.js",
   "entries": {
     "Benchmark": [
@@ -124,6 +124,37 @@ window.BENCHMARK_DATA = {
             "range": "±1.46%",
             "unit": "ops/sec",
             "extra": "86 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "sasaplus1@gmail.com",
+            "name": "sasaplus1",
+            "username": "sasaplus1"
+          },
+          "committer": {
+            "email": "sasaplus1@gmail.com",
+            "name": "sasaplus1",
+            "username": "sasaplus1"
+          },
+          "distinct": true,
+          "id": "d5f309cd8bf5444b712a2ca7c173df0eb4157248",
+          "message": "update HISTORY.md",
+          "timestamp": "2021-03-06T16:52:27+09:00",
+          "tree_id": "cda67330253a597771f01aaf93d180156545c73c",
+          "url": "https://github.com/sasaplus1/entry-list.js/commit/d5f309cd8bf5444b712a2ca7c173df0eb4157248"
+        },
+        "date": 1615017277367,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "node-14:entry-list:fixture1",
+            "value": 87439,
+            "range": "±1.06%",
+            "unit": "ops/sec",
+            "extra": "91 samples"
           }
         ]
       }
