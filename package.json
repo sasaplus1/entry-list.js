@@ -1,7 +1,7 @@
 {
   "name": "entry-list",
   "description": "get entry list of object",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "sasa+1 <sasaplus1@gmail.com>",
   "browser": "./dist/umd/entry-list.js",
   "devDependencies": {
